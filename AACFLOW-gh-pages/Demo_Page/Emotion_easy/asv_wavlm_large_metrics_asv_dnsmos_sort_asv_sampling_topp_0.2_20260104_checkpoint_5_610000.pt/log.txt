@@ -1,0 +1,66 @@
+Collecting vocos
+  Cloning https://****@github.com/Sanyuan-Chen/vocos to /tmp/pip-install-g8j9ycec/vocos_e533246875b74298a654ad1f7bdd0a71
+  Resolved https://****@github.com/Sanyuan-Chen/vocos to commit 2632274927354877f43990919e73404e50874434
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Requirement already satisfied: torch in /home/aiscuser/.local/lib/python3.10/site-packages (from vocos) (2.3.1+cu118)
+Requirement already satisfied: torchaudio in /home/aiscuser/.local/lib/python3.10/site-packages (from vocos) (2.3.1+cu118)
+Requirement already satisfied: numpy in /home/aiscuser/.local/lib/python3.10/site-packages (from vocos) (1.26.4)
+Requirement already satisfied: scipy in /home/aiscuser/.local/lib/python3.10/site-packages (from vocos) (1.15.3)
+Requirement already satisfied: einops in /home/aiscuser/.local/lib/python3.10/site-packages (from vocos) (0.8.1)
+Requirement already satisfied: pyyaml in /home/aiscuser/.local/lib/python3.10/site-packages (from vocos) (6.0.3)
+Requirement already satisfied: huggingface_hub in /home/aiscuser/.local/lib/python3.10/site-packages (from vocos) (0.36.0)
+Requirement already satisfied: encodec==0.1.1 in /home/aiscuser/.local/lib/python3.10/site-packages (from vocos) (0.1.1)
+Requirement already satisfied: filelock in /opt/conda/lib/python3.10/site-packages (from huggingface_hub->vocos) (3.13.1)
+Requirement already satisfied: fsspec>=2023.5.0 in /home/aiscuser/.local/lib/python3.10/site-packages (from huggingface_hub->vocos) (2024.12.0)
+Requirement already satisfied: packaging>=20.9 in /opt/conda/lib/python3.10/site-packages (from huggingface_hub->vocos) (23.2)
+Requirement already satisfied: requests in /opt/conda/lib/python3.10/site-packages (from huggingface_hub->vocos) (2.32.2)
+Requirement already satisfied: tqdm>=4.42.1 in /opt/conda/lib/python3.10/site-packages (from huggingface_hub->vocos) (4.66.4)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in /opt/conda/lib/python3.10/site-packages (from huggingface_hub->vocos) (4.11.0)
+Requirement already satisfied: hf-xet<2.0.0,>=1.1.3 in /home/aiscuser/.local/lib/python3.10/site-packages (from huggingface_hub->vocos) (1.2.0)
+Requirement already satisfied: sympy in /opt/conda/lib/python3.10/site-packages (from torch->vocos) (1.12.1)
+Requirement already satisfied: networkx in /opt/conda/lib/python3.10/site-packages (from torch->vocos) (3.2.1)
+Requirement already satisfied: jinja2 in /opt/conda/lib/python3.10/site-packages (from torch->vocos) (3.1.4)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu11==11.8.89 in /home/aiscuser/.local/lib/python3.10/site-packages (from torch->vocos) (11.8.89)
+Requirement already satisfied: nvidia-cuda-runtime-cu11==11.8.89 in /home/aiscuser/.local/lib/python3.10/site-packages (from torch->vocos) (11.8.89)
+Requirement already satisfied: nvidia-cuda-cupti-cu11==11.8.87 in /home/aiscuser/.local/lib/python3.10/site-packages (from torch->vocos) (11.8.87)
+Requirement already satisfied: nvidia-cudnn-cu11==8.7.0.84 in /home/aiscuser/.local/lib/python3.10/site-packages (from torch->vocos) (8.7.0.84)
+Requirement already satisfied: nvidia-cublas-cu11==11.11.3.6 in /home/aiscuser/.local/lib/python3.10/site-packages (from torch->vocos) (11.11.3.6)
+Requirement already satisfied: nvidia-cufft-cu11==10.9.0.58 in /home/aiscuser/.local/lib/python3.10/site-packages (from torch->vocos) (10.9.0.58)
+Requirement already satisfied: nvidia-curand-cu11==10.3.0.86 in /home/aiscuser/.local/lib/python3.10/site-packages (from torch->vocos) (10.3.0.86)
+Requirement already satisfied: nvidia-cusolver-cu11==11.4.1.48 in /home/aiscuser/.local/lib/python3.10/site-packages (from torch->vocos) (11.4.1.48)
+Requirement already satisfied: nvidia-cusparse-cu11==11.7.5.86 in /home/aiscuser/.local/lib/python3.10/site-packages (from torch->vocos) (11.7.5.86)
+Requirement already satisfied: nvidia-nccl-cu11==2.20.5 in /home/aiscuser/.local/lib/python3.10/site-packages (from torch->vocos) (2.20.5)
+Requirement already satisfied: nvidia-nvtx-cu11==11.8.86 in /home/aiscuser/.local/lib/python3.10/site-packages (from torch->vocos) (11.8.86)
+Requirement already satisfied: triton==2.3.1 in /opt/conda/lib/python3.10/site-packages (from torch->vocos) (2.3.1)
+Requirement already satisfied: MarkupSafe>=2.0 in /opt/conda/lib/python3.10/site-packages (from jinja2->torch->vocos) (2.1.3)
+Requirement already satisfied: charset-normalizer<4,>=2 in /opt/conda/lib/python3.10/site-packages (from requests->huggingface_hub->vocos) (2.0.4)
+Requirement already satisfied: idna<4,>=2.5 in /opt/conda/lib/python3.10/site-packages (from requests->huggingface_hub->vocos) (3.7)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /opt/conda/lib/python3.10/site-packages (from requests->huggingface_hub->vocos) (2.2.1)
+Requirement already satisfied: certifi>=2017.4.17 in /opt/conda/lib/python3.10/site-packages (from requests->huggingface_hub->vocos) (2024.2.2)
+Requirement already satisfied: mpmath<1.4.0,>=1.1.0 in /opt/conda/lib/python3.10/site-packages (from sympy->torch->vocos) (1.3.0)
+sample_times=5, asv_model_name=wavlm_large, VALLE_model_dir=/modelblob/v-hanchenpei/models/textless_nlp, VALLE_model_name=internal_base, codec=vocos, text_normalization=False, accelerate=False, sampling_topp=0.2, temperature=1.0, frequency_penalty=0.0, frequency_penalty_pow=1.0, repetition_penalty=0.0, repetition_penalty_len=99999999999, freq_threshold_d=10, freq_threshold_w=0.1, save_codes=True, save_wavs=True, conti_infer=False, infer_seed=0, metrics=['asv', 'dnsmos'], metrics_for_sort=asv, input_codec_1=/modelblob/v-hanchenpei/data/inference_all_final/emotion_easy_task/emotion_easy_task.codec1, input_transcription_1=/modelblob/v-hanchenpei/data/inference_all_final/emotion_easy_task/emotion_easy_task.transcription1, input_transcription_2=/modelblob/v-hanchenpei/data/inference_all_final/emotion_easy_task/emotion_easy_task.transcription2, input_emotion=/modelblob/v-hanchenpei/data/inference_all_final/emotion_easy_task/emotion_easy_task.emotion, input_pair=/modelblob/v-hanchenpei/data/inference_all_final/emotion_easy_task/emotion_easy_task.pair, output_dir_name=/modelblob/v-hanchenpei/benchmark_results/SpeechEdit_ablation/emotion_easy_task/vocos/asv_wavlm_large_metrics_asv_dnsmos_sort_asv_sampling_topp_0.2_20260104_checkpoint_5_610000.pt, checkpoint_file=checkpoint_5_610000.pt
+Loading model1: /modelblob/v-hanchenpei/models/textless_nlp/valle_attn_ablation_data_1231_ar, model2: /modelblob/v-hanchenpei/models/textless_nlp/valle_attn_ablation_data_1231_nar
+False
+False
+Loading checkpoint from bash: checkpoint_5_610000.pt
+False
+False
+Loading checkpoint from bash: checkpoint_5_610000.pt
+Avg final asv score: 35.82073958218098 / 80 = 0.4477592447772622
+Avg best asv score: 35.82073958218098 / 80 = 0.4477592447772622
+Avg median asv score: 29.49778214097023 / 80 = 0.3687222767621279
+Avg random asv score: 28.863538110628724 / 80 = 0.3607942263828591
+
+Avg final dnsmos score: 324.8505620956421 / 80 = 4.060632026195526
+Avg best dnsmos score: 336.59809136390686 / 80 = 4.207476142048836
+Avg median dnsmos score: 324.2901031970978 / 80 = 4.053626289963722
+Avg random dnsmos score: 324.35529112815857 / 80 = 4.054441139101982
+
+
+Save codes in /modelblob/v-hanchenpei/benchmark_results/SpeechEdit_ablation/emotion_easy_task/vocos/asv_wavlm_large_metrics_asv_dnsmos_sort_asv_sampling_topp_0.2_20260104_checkpoint_5_610000.pt/output_codes_s*.txt 
+
+Save scores in /modelblob/v-hanchenpei/benchmark_results/SpeechEdit_ablation/emotion_easy_task/vocos/asv_wavlm_large_metrics_asv_dnsmos_sort_asv_sampling_topp_0.2_20260104_checkpoint_5_610000.pt/output_score_file.tsv 
+
+Save result in /modelblob/v-hanchenpei/benchmark_results/SpeechEdit_ablation/emotion_easy_task/vocos/asv_wavlm_large_metrics_asv_dnsmos_sort_asv_sampling_topp_0.2_20260104_checkpoint_5_610000.pt/output_result.txt 
+
