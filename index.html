@@ -6,107 +6,175 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SpeechEdit - A Unified Neural Codec Language Model for Selective Editable Text to Speech Generation</title>
     <link rel="stylesheet" href="styles.css">
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #ffffff;
+            color: #222;
+        }
+
+        h1, h2, h3 {
+            margin: 0.5em 0;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        /* ================= TABLE HEADER ================= */
+        .audio-table-header.musiccaps {
+            display: flex;
+            width: 100%;
+            font-weight: bold;
+            border-bottom: 2px solid #333;
+        }
+
+        .audio-table-header.musiccaps > div {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            border-right: 1px solid #ddd;
+        }
+
+        .audio-table-header.musiccaps > div:last-child {
+            border-right: none;
+        }
+
+        /* ================= ROW GROUP ================= */
+        .audio-row-group {
+            display: flex;
+            width: 100%;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Left: Prompt */
+        .group-left {
+            flex: 1;
+            display: flex;
+            border-right: 1px solid #ddd;
+        }
+
+        .group-left .row-Ground_Truth {
+            flex: 1;
+            padding: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Right: Multiple conditions */
+        .group-right {
+            flex: 5;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sub-row {
+            display: flex;
+            border-bottom: 1px solid #eee;
+        }
+
+        .sub-row:last-child {
+            border-bottom: none;
+        }
+
+        .row-Generate_Text,
+        .row-emotion,
+        .row-Step-Audio,
+        .row-Audio {
+            flex: 1;
+            padding: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .row-Generate_Text {
+            text-align: left;
+            font-size: 14px;
+        }
+
+        /* ================= AUDIO MINI ================= */
+        .audio-item-compact {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .audio-title {
+            font-size: 12px;
+            color: #dedede;
+        }
+
+        .audio-player-mini {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .play-btn-mini {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;      /* 关键：变圆 */
+            border: none;
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #2f80ed;    /* 蓝色按钮 */
+            color: white;
+            font-size: 14px;
+        }
+
+        .play-btn-mini:hover {
+            background: #80ee02;
+        }
+
+        .progress-mini {
+            width: 40px;
+            height: 4px;
+            background: #eae6eebf;
+            border-radius: 2px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 13px;
+        }
+        .task-title {
+    margin: 48px 0 24px;
+    padding: 18px 24px;
+
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+
+    border-radius: 14px;
+}
+
+.task-title.hard-task {
+    background: linear-gradient(
+        135deg,
+        #0f766e,
+        #059669
+    );
+    color: #ffffff;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+    </style>
 </head>
-<style>
-    /* 1. 针对表头容器：设置为 Flex 布局 */
-    .audio-table-header.musiccaps {
-        display: flex;
-        /* 关键：让子元素横向排列 */
-        align-items: center;
-        /* 垂直居中 */
-        width: 100%;
-        /* 占满宽度 */
-        /* background-color: #f0f0f0; 选填：加个背景色方便看清 */
-        font-weight: bold;
-    }
 
-    /* 2. 针对表头里的每一列：平分宽度 */
-    .audio-table-header.musiccaps>div {
-        flex: 1;
-        /* 关键：让 6 个 div 平均分配宽度 */
-        padding: 10px;
-        /* 选填：内边距 */
-        text-align: center;
-        /* 选填：文字居中 */
-        border-right: 1px solid #ddd;
-        /* 选填：加个分隔线 */
-    }
-
-    /* 3. (重要) 也要给下面的数据行加上同样的样式，否则表头和内容对不齐 */
-    /* 假设你在 .audio-rows 里面会有一行行的数据 div */
-    .audio-rows.musiccaps .row-item {
-        display: flex;
-        width: 100%;
-    }
-
-    .audio-rows.musiccaps .row-item>div {
-        flex: 1;
-        padding: 10px;
-    }
-</style>
-
-<style>
-    /* 1. 大容器：横向排列左右两块 */
-    .audio-row-group {
-        display: flex;
-        width: 100%;
-        border-bottom: 1px solid #ddd;
-        /* 组与组之间的分割线 */
-    }
-
-    /* 2. 左侧块：包含 Prompt 和 GT */
-    /* 占总宽度的 2/5 (40%)，因为对应前两列 */
-    .group-left {
-        flex: 1;
-        display: flex;
-        border-right: 1px solid #eee;
-        /* 左右分割线 */
-    }
-
-    /* 左侧内部两个单元格各占一半 */
-    .group-left .row-Prompt_Text,
-    .group-left .row-Ground_Truth {
-        flex: 1;
-        padding: 10px;
-        display: flex;
-        align-items: center;
-        /* 垂直居中 */
-        justify-content: center;
-    }
-
-    /* 3. 右侧块：包含多个子行 */
-    /* 占总宽度的 3/5 (60%)，因为对应后三列 */
-    .group-right {
-        flex: 3;
-        display: flex;
-        flex-direction: column;
-        /* 垂直排列 */
-    }
-
-    /* 右侧的每一小行 */
-    .sub-row {
-        display: flex;
-        flex: 1;
-        border-bottom: 1px solid #eee;
-        /* 行与行之间的分割线 */
-    }
-
-    .sub-row:last-child {
-        border-bottom: none;
-        /* 去掉最后一行的线 */
-    }
-
-    /* 右侧内部三个单元格各占 1/3 */
-    .sub-row .row-Generate_Text,
-    .sub-row .row-emotion,
-    .sub-row .row-Audio {
-        flex: 1;
-        padding: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-</style>
 
 <body>
     <header>
@@ -169,16 +237,19 @@
 
                 <!-- Second section: Easy Task -->
                 <div class="music-section">
-                    <h3 class="section-title"><em>Easy Task</em> uses neutral prompts, presenting no emotional conflict
-                        with the target. It includes 80 test samples from 4 unseen speakers in the Step-audio-EditX
-                        benchmark, where the target emotions are balanced across the four non-neutral emotions. </h3>
+                    
+                    <div class="task-title hard-task">
+                        Easy Task uses neutral prompts, presenting no emotional conflict
+                        with the target
+                    </div>
                     <div class="audio-table">
                         <div class="audio-table-header musiccaps">
                             <div class="header_Ground_Truth">Prompt Audio</div>
                             <div class="header_Generate_Text">Generate Text</div>
                             <div class="header_emotion">Target Emotion</div>
-                            <div class="header_Audio">SpeechEdit demo 1</div>
-                            <div class="header_Audio">SpeechEdit demo 2</div>
+                            <div class="header_Audio">Step Audio EditX</div>
+                            <div class="header_Audio">SpeechEdit</div>
+                            <div class="header_Audio">SpeechEdit</div>
                         </div>
                         <div class="audio-rows musiccaps">
 
@@ -207,6 +278,16 @@
                                         <div class="row-Generate_Text">This makes me so happy for you, I am glad you are
                                             getting the right kind of support you need!</div>
                                         <div class="row-emotion">Happy</div>
+                                        <div class="row-Step-Audio">
+                                            <div class="audio-item-compact">
+                                                <span class="audio-title">iteration_2</span>
+                                                <div class="audio-player-mini">
+                                                    <button class="play-btn-mini"
+                                                        data-audio="Demo_Page/Emotion_easy/Happy/step_1.wav">▶</button>
+                                                    <div class="progress-mini"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="row-Audio">
                                             <div class="audio-item-compact">
                                                 <span class="audio-title">demo 1</span>
@@ -234,6 +315,16 @@
                                         <div class="row-Generate_Text">Absolutely unbelievable! You people should be
                                             ashamed of yourselves.</div>
                                         <div class="row-emotion">Angry</div>
+                                        <div class="row-Step-Audio">
+                                            <div class="audio-item-compact">
+                                                <span class="audio-title">iteration_2</span>
+                                                <div class="audio-player-mini">
+                                                    <button class="play-btn-mini"
+                                                        data-audio="Demo_Page/Emotion_easy/Angry/step_5.wav">▶</button>
+                                                    <div class="progress-mini"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="row-Audio">
                                             <div class="audio-item-compact">
                                                 <span class="audio-title">demo 1</span>
@@ -261,6 +352,16 @@
                                         <div class="row-Generate_Text">I don't know. My life is a big mess. Everything
                                             is so complicated.</div>
                                         <div class="row-emotion">Sad</div>
+                                        <div class="row-Step-Audio">
+                                            <div class="audio-item-compact">
+                                                <span class="audio-title">iteration_2</span>
+                                                <div class="audio-player-mini">
+                                                    <button class="play-btn-mini"
+                                                        data-audio="Demo_Page/Emotion_easy/Sad/step_14.wav">▶</button>
+                                                    <div class="progress-mini"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="row-Audio">
                                             <div class="audio-item-compact">
                                                 <span class="audio-title">demo 1</span>
@@ -288,6 +389,16 @@
                                         <div class="row-Generate_Text">Is that true? He doesn't look like a guy who'd
                                             ever cheat on his wife, does he?</div>
                                         <div class="row-emotion">Surprise</div>
+                                        <div class="row-Step-Audio">
+                                            <div class="audio-item-compact">
+                                                <span class="audio-title">iteration_2</span>
+                                                <div class="audio-player-mini">
+                                                    <button class="play-btn-mini"
+                                                        data-audio="Demo_Page/Emotion_easy/Surprise/step_17.wav">▶</button>
+                                                    <div class="progress-mini"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="row-Audio">
                                             <div class="audio-item-compact">
                                                 <span class="audio-title">demo 1</span>
@@ -330,32 +441,46 @@
                                 <!-- 右侧：变化部分 (对应表头后三列，垂直排列) -->
                                 <div class="group-right">
 
-                                    <!-- 子行 1: Happy -->
-                                    <div class="sub-row">
-                                        <div class="row-Generate_Text">I'm a guy and it's the same for me! I'm glad I'm
-                                            not the only one who feels this way.</div>
-                                        <div class="row-emotion">Happy</div>
-                                        <div class="row-Audio">
-                                            <div class="audio-item-compact">
-                                                <span class="audio-title">demo 1</span>
-                                                <div class="audio-player-mini">
-                                                    <button class="play-btn-mini"
-                                                        data-audio="Demo_Page/Emotion_easy/Happy/gen_21_3.wav">▶</button>
-                                                    <div class="progress-mini"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row-Audio">
-                                            <div class="audio-item-compact">
-                                                <span class="audio-title">demo 2</span>
-                                                <div class="audio-player-mini">
-                                                    <button class="play-btn-mini"
-                                                        data-audio="Demo_Page/Emotion_easy/Happy/gen_21_4.wav">▶</button>
-                                                    <div class="progress-mini"></div>
-                                                </div>
+                                    <!-- Happy -->
+                                <div class="sub-row">
+                                    <div class="row-Generate_Text">
+                                        I'm a guy and it's the same for me! I'm glad I'm not the only one who feels this way.
+                                    </div>
+                                    <div class="row-emotion">Happy</div>
+
+                                    <div class="row-Step-Audio">
+                                        <div class="audio-item-compact">
+                                            <span class="audio-title">iteration_2</span>
+                                            <div class="audio-player-mini">
+                                                <button class="play-btn-mini"
+                                                    data-audio="Demo_Page/Emotion_easy/Happy/step_21.wav">▶</button>
+                                                <div class="progress-mini"></div>
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="row-Audio">
+                                        <div class="audio-item-compact">
+                                            <span class="audio-title">demo 1</span>
+                                            <div class="audio-player-mini">
+                                                <button class="play-btn-mini"
+                                                    data-audio="Demo_Page/Emotion_easy/Happy/gen_21_3.wav">▶</button>
+                                                <div class="progress-mini"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row-Audio">
+                                        <div class="audio-item-compact">
+                                            <span class="audio-title">demo 2</span>
+                                            <div class="audio-player-mini">
+                                                <button class="play-btn-mini"
+                                                    data-audio="Demo_Page/Emotion_easy/Happy/gen_21_4.wav">▶</button>
+                                                <div class="progress-mini"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                                     <!-- 子行 1: Angry -->
                                     <div class="sub-row">
@@ -363,6 +488,16 @@
                                             quick? It's the third quarter and you've been blabbering on since the first!
                                         </div>
                                         <div class="row-emotion">Angry</div>
+                                        <div class="row-Step-Audio">
+                                            <div class="audio-item-compact">
+                                                <span class="audio-title">iteration_2</span>
+                                                <div class="audio-player-mini">
+                                                    <button class="play-btn-mini"
+                                                        data-audio="Demo_Page/Emotion_easy/Angry/step_27.wav">▶</button>
+                                                    <div class="progress-mini"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="row-Audio">
                                             <div class="audio-item-compact">
                                                 <span class="audio-title">demo 1</span>
@@ -390,8 +525,18 @@
                                         <div class="row-Generate_Text">But I... I still love him! And it's all my fault!
                                             I can't believe how immature and selfish I was being. I mean, he is a
                                             firefighter, it's not like he can just leave someone in a burning building
-                                            and meet me for dinner. I've totally messed this up!"</div>
+                                            and meet me for dinner. I've totally messed this up!</div>
                                         <div class="row-emotion">Sad</div>
+                                        <div class="row-Step-Audio">
+                                            <div class="audio-item-compact">
+                                                <span class="audio-title">iteration_2</span>
+                                                <div class="audio-player-mini">
+                                                    <button class="play-btn-mini"
+                                                        data-audio="Demo_Page/Emotion_easy/Sad/step_30.wav">▶</button>
+                                                    <div class="progress-mini"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="row-Audio">
                                             <div class="audio-item-compact">
                                                 <span class="audio-title">demo 1</span>
@@ -418,6 +563,17 @@
                                     <div class="sub-row">
                                         <div class="row-Generate_Text">Oh, really? I know that telephone signal must have been shielded in the elevator shaft, so what did you do then?</div>
                                         <div class="row-emotion">Surprise</div>
+                                        
+                                        <div class="row-Step-Audio">
+                                            <div class="audio-item-compact">
+                                                <span class="audio-title">iteration_2</span>
+                                                <div class="audio-player-mini">
+                                                    <button class="play-btn-mini"
+                                                        data-audio="Demo_Page/Emotion_easy/Surprise/step_37.wav">▶</button>
+                                                    <div class="progress-mini"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="row-Audio">
                                             <div class="audio-item-compact">
                                                 <span class="audio-title">demo 1</span>
@@ -444,6 +600,8 @@
                            
                         </div>
                     </div>
+
+                    
                 </div>
             </div>
             </div>
