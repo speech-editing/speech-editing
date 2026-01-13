@@ -74,6 +74,26 @@
             flex-direction: column;
         }
 
+        .group-left-feature {
+            flex: 1;
+            display: flex;
+            border-right: 1px solid #ddd;
+        }
+
+        .group-left-feature .row-Ground_Truth-feature {
+            flex: 1;
+            padding: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .group-right-feature {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+        }
+
         .sub-row {
             display: flex;
             border-bottom: 1px solid #eee;
@@ -193,6 +213,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        .tag-blue {
+            color: #B2D9F0;
+            /* 清爽高亮蓝（偏论文/技术风） */
+            font-weight: 700;
+        }
+
+        .tag-orange {
+            color: #F0B2EB;
+            /* 橙红，高对比 */
+            font-weight: 700;
         }
     </style>
 </head>
@@ -1064,6 +1096,273 @@
                 </div>
             </div>
             </div>
+        </section>
+        <section id="audio" class="audio-section">
+            <div class="container">
+                <h2>Audio Samples of Feature Editing Task</h2>
+                <p class="section-desc">For each prosodic feature, we generate paired speech samples under low and high
+                    control instructions using the same transcription.</p>
+                <div class="audio-table feature-table">
+
+                    <!-- ===== Header ===== -->
+                    <div class="audio-table-header musiccaps">
+                        <div>Reference</div>
+                        <div>Transcription</div>
+                        <div>Label</div>
+                        <div>Generated Audio</div>
+                    </div>
+                    <div class="audio-rows musiccaps">
+                        <div class="audio-row-group">
+
+                            <!-- 左侧：Prompt Audio（整组共用） -->
+                            <div class="group-left-feature">
+                                <div class="row-Ground_Truth-feature">
+                                    <div class="audio-item-compact">
+                                        <div class="audio-player-mini">
+                                            <button class="play-btn-mini"
+                                                data-audio="Demo_Page/feature_task/f_ref_1.wav">▶</button>
+                                            <div class="progress-mini"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 右侧：多 emotion 子行 -->
+                            <div class="group-right-feature">
+
+                                <!-- Happy -->
+                                <div class="sub-row">
+                                    <div class="row-Generate_Text">
+                                        The world felt unusually still, as if time paused to appreciate the delicate
+                                        harmony
+                                        surrounding us.
+                                    </div>
+                                    <div class="row-emotion"><span class="tag-orange">speed-high</span></div>
+
+                                    <div class="row-Step-Audio">
+                                        <div class="audio-item-compact">
+                                            <div class="audio-player-mini">
+                                                <button class="play-btn-mini"
+                                                    data-audio="Demo_Page/feature_task/s_h_1.wav">▶</button>
+                                                <div class="progress-mini"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sub-row">
+                                    <div class="row-Generate_Text">
+                                        The world felt unusually still, as if time paused to appreciate the delicate
+                                        harmony
+                                        surrounding us.
+                                    </div>
+                                    <div class="row-emotion"><span class="tag-blue">speed-low</span></div>
+
+                                    <div class="row-Step-Audio">
+                                        <div class="audio-item-compact">
+                                            <div class="audio-player-mini">
+                                                <button class="play-btn-mini"
+                                                    data-audio="Demo_Page/feature_task/s_l_1.wav">▶</button>
+                                                <div class="progress-mini"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="sub-row">
+                                    <div class="row-Generate_Text">
+                                        A serene moment unfolded as the evening sky settled into warm colors that
+                                        whispered peaceful stories.
+                                    </div>
+                                    <div class="row-emotion"><span class="tag-orange">pitch-high</span></div>
+
+                                    <div class="row-Step-Audio">
+                                        <div class="audio-item-compact">
+                                            <div class="audio-player-mini">
+                                                <button class="play-btn-mini"
+                                                    data-audio="Demo_Page/feature_task/p_h_1.wav">▶</button>
+                                                <div class="progress-mini"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sub-row">
+                                    <div class="row-Generate_Text">
+                                        A serene moment unfolded as the evening sky settled into warm colors that
+                                        whispered peaceful stories.
+                                    </div>
+                                    <div class="row-emotion"><span class="tag-blue">pitch-low</span></div>
+
+                                    <div class="row-Step-Audio">
+                                        <div class="audio-item-compact">
+                                            <div class="audio-player-mini">
+                                                <button class="play-btn-mini"
+                                                    data-audio="Demo_Page/feature_task/p_l_1.wav">▶</button>
+                                                <div class="progress-mini"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="sub-row">
+                                    <div class="row-Generate_Text">
+                                        Every subtle sound blended into a graceful rhythm that shaped the atmosphere
+                                        with quiet elegance.
+                                    </div>
+                                    <div class="row-emotion"><span class="tag-orange">energy-high</span></div>
+
+                                    <div class="row-Step-Audio">
+                                        <div class="audio-item-compact">
+                                            <div class="audio-player-mini">
+                                                <button class="play-btn-mini"
+                                                    data-audio="Demo_Page/feature_task/e_h_1.wav">▶</button>
+                                                <div class="progress-mini"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sub-row">
+                                    <div class="row-Generate_Text">
+                                        Every subtle sound blended into a graceful rhythm that shaped the atmosphere
+                                        with quiet elegance.
+                                    </div>
+                                    <div class="row-emotion"><span class="tag-blue">energy-low</span></div>
+
+                                    <div class="row-Step-Audio">
+                                        <div class="audio-item-compact">
+                                            <div class="audio-player-mini">
+                                                <button class="play-btn-mini"
+                                                    data-audio="Demo_Page/feature_task/e_l_1.wav">▶</button>
+                                                <div class="progress-mini"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="audio-row-group">
+
+                            <!-- 左侧：Prompt Audio（整组共用） -->
+                            <div class="group-left-feature">
+                                <div class="row-Ground_Truth-feature">
+                                    <div class="audio-item-compact">
+                                        <div class="audio-player-mini">
+                                            <button class="play-btn-mini"
+                                                data-audio="Demo_Page/feature_task/f_ref_2.wav">▶</button>
+                                            <div class="progress-mini"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 右侧：多 emotion 子行 -->
+                            <div class="group-right-feature">
+
+                                <!-- Happy -->
+                                <div class="sub-row">
+                                    <div class="row-Generate_Text">
+                                        The gentle motion of the day created a flowing balance that invited reflection and steady comfort.
+                                    </div>
+                                    <div class="row-emotion"><span class="tag-orange">speed-high</span></div>
+
+                                    <div class="row-Step-Audio">
+                                        <div class="audio-item-compact">
+                                            <div class="audio-player-mini">
+                                                <button class="play-btn-mini"
+                                                    data-audio="Demo_Page/feature_task/s_h_2.wav">▶</button>
+                                                <div class="progress-mini"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sub-row">
+                                    <div class="row-Generate_Text">
+                                        The gentle motion of the day created a flowing balance that invited reflection and steady comfort.
+                                    </div>
+                                    <div class="row-emotion"><span class="tag-blue">speed-low</span></div>
+
+                                    <div class="row-Step-Audio">
+                                        <div class="audio-item-compact">
+                                            <div class="audio-player-mini">
+                                                <button class="play-btn-mini"
+                                                    data-audio="Demo_Page/feature_task/s_l_2.wav">▶</button>
+                                                <div class="progress-mini"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="sub-row">
+                                    <div class="row-Generate_Text">
+                                        The world felt unusually still, as if time paused to appreciate the delicate harmony surrounding us.
+                                    </div>
+                                    <div class="row-emotion"><span class="tag-orange">pitch-high</span></div>
+
+                                    <div class="row-Step-Audio">
+                                        <div class="audio-item-compact">
+                                            <div class="audio-player-mini">
+                                                <button class="play-btn-mini"
+                                                    data-audio="Demo_Page/feature_task/p_h_2.wav">▶</button>
+                                                <div class="progress-mini"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sub-row">
+                                    <div class="row-Generate_Text">
+                                        The world felt unusually still, as if time paused to appreciate the delicate harmony surrounding us.
+                                    </div>
+                                    <div class="row-emotion"><span class="tag-blue">pitch-low</span></div>
+
+                                    <div class="row-Step-Audio">
+                                        <div class="audio-item-compact">
+                                            <div class="audio-player-mini">
+                                                <button class="play-btn-mini"
+                                                    data-audio="Demo_Page/feature_task/p_l_2.wav">▶</button>
+                                                <div class="progress-mini"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="sub-row">
+                                    <div class="row-Generate_Text">
+                                        A serene moment unfolded as the evening sky settled into warm colors that whispered peaceful stories.
+                                    </div>
+                                    <div class="row-emotion"><span class="tag-orange">energy-high</span></div>
+
+                                    <div class="row-Step-Audio">
+                                        <div class="audio-item-compact">
+                                            <div class="audio-player-mini">
+                                                <button class="play-btn-mini"
+                                                    data-audio="Demo_Page/feature_task/e_h_2.wav">▶</button>
+                                                <div class="progress-mini"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sub-row">
+                                    <div class="row-Generate_Text">
+                                        A serene moment unfolded as the evening sky settled into warm colors that whispered peaceful stories.
+                                    </div>
+                                    <div class="row-emotion"><span class="tag-blue">energy-low</span></div>
+
+                                    <div class="row-Step-Audio">
+                                        <div class="audio-item-compact">
+                                            <div class="audio-player-mini">
+                                                <button class="play-btn-mini"
+                                                    data-audio="Demo_Page/feature_task/e_l_2.wav">▶</button>
+                                                <div class="progress-mini"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </section>
         <section id="audio" class="audio-section">
             <div class="container">
