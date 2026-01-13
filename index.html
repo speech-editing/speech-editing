@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SpeechEdit - A Unified Neural Codec Language Model for Selective Editable Text to Speech Generation</title>
     <link rel="stylesheet" href="styles.css">
-        <style>
+    <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -14,7 +14,9 @@
             color: #222;
         }
 
-        h1, h2, h3 {
+        h1,
+        h2,
+        h3 {
             margin: 0.5em 0;
         }
 
@@ -32,14 +34,14 @@
             border-bottom: 2px solid #333;
         }
 
-        .audio-table-header.musiccaps > div {
+        .audio-table-header.musiccaps>div {
             flex: 1;
             padding: 12px;
             text-align: center;
             border-right: 1px solid #ddd;
         }
 
-        .audio-table-header.musiccaps > div:last-child {
+        .audio-table-header.musiccaps>div:last-child {
             border-right: none;
         }
 
@@ -120,7 +122,8 @@
         .play-btn-mini {
             width: 28px;
             height: 28px;
-            border-radius: 50%;      /* 关键：变圆 */
+            border-radius: 50%;
+            /* 关键：变圆 */
             border: none;
             cursor: pointer;
 
@@ -128,7 +131,8 @@
             align-items: center;
             justify-content: center;
 
-            background: #2f80ed;    /* 蓝色按钮 */
+            background: #2f80ed;
+            /* 蓝色按钮 */
             color: white;
             font-size: 14px;
         }
@@ -150,28 +154,46 @@
             color: #666;
             font-size: 13px;
         }
+
         .task-title {
-    margin: 48px 0 24px;
-    padding: 18px 24px;
+            margin: 48px 0 24px;
+            padding: 18px 24px;
 
-    text-align: center;
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
 
-    border-radius: 14px;
-}
+            border-radius: 14px;
+        }
 
-.task-title.hard-task {
-    background: linear-gradient(
-        135deg,
-        #0f766e,
-        #059669
-    );
-    color: #ffffff;
+        .task-title.hard-task {
+            background: linear-gradient(135deg,
+                    #0f766e,
+                    #059669);
+            color: #ffffff;
 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-}
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        /* ===== Voice Conversion Table ===== */
+        .vc-table .audio-table-header>div {
+            flex: 1;
+        }
+
+        .vc-row {
+            display: flex;
+            width: 100%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .vc-cell {
+            flex: 1;
+            padding: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 
@@ -237,7 +259,7 @@
 
                 <!-- Second section: Easy Task -->
                 <div class="music-section">
-                    
+
                     <div class="task-title hard-task">
                         Easy Task uses neutral prompts, presenting no emotional conflict
                         with the target
@@ -442,45 +464,46 @@
                                 <div class="group-right">
 
                                     <!-- Happy -->
-                                <div class="sub-row">
-                                    <div class="row-Generate_Text">
-                                        I'm a guy and it's the same for me! I'm glad I'm not the only one who feels this way.
-                                    </div>
-                                    <div class="row-emotion">Happy</div>
+                                    <div class="sub-row">
+                                        <div class="row-Generate_Text">
+                                            I'm a guy and it's the same for me! I'm glad I'm not the only one who feels
+                                            this way.
+                                        </div>
+                                        <div class="row-emotion">Happy</div>
 
-                                    <div class="row-Step-Audio">
-                                        <div class="audio-item-compact">
-                                            <span class="audio-title">iteration_2</span>
-                                            <div class="audio-player-mini">
-                                                <button class="play-btn-mini"
-                                                    data-audio="Demo_Page/Emotion_easy/Happy/step_21.wav">▶</button>
-                                                <div class="progress-mini"></div>
+                                        <div class="row-Step-Audio">
+                                            <div class="audio-item-compact">
+                                                <span class="audio-title">iteration_2</span>
+                                                <div class="audio-player-mini">
+                                                    <button class="play-btn-mini"
+                                                        data-audio="Demo_Page/Emotion_easy/Happy/step_21.wav">▶</button>
+                                                    <div class="progress-mini"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row-Audio">
+                                            <div class="audio-item-compact">
+                                                <span class="audio-title">demo 1</span>
+                                                <div class="audio-player-mini">
+                                                    <button class="play-btn-mini"
+                                                        data-audio="Demo_Page/Emotion_easy/Happy/gen_21_3.wav">▶</button>
+                                                    <div class="progress-mini"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row-Audio">
+                                            <div class="audio-item-compact">
+                                                <span class="audio-title">demo 2</span>
+                                                <div class="audio-player-mini">
+                                                    <button class="play-btn-mini"
+                                                        data-audio="Demo_Page/Emotion_easy/Happy/gen_21_4.wav">▶</button>
+                                                    <div class="progress-mini"></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="row-Audio">
-                                        <div class="audio-item-compact">
-                                            <span class="audio-title">demo 1</span>
-                                            <div class="audio-player-mini">
-                                                <button class="play-btn-mini"
-                                                    data-audio="Demo_Page/Emotion_easy/Happy/gen_21_3.wav">▶</button>
-                                                <div class="progress-mini"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row-Audio">
-                                        <div class="audio-item-compact">
-                                            <span class="audio-title">demo 2</span>
-                                            <div class="audio-player-mini">
-                                                <button class="play-btn-mini"
-                                                    data-audio="Demo_Page/Emotion_easy/Happy/gen_21_4.wav">▶</button>
-                                                <div class="progress-mini"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
                                     <!-- 子行 1: Angry -->
                                     <div class="sub-row">
@@ -561,9 +584,10 @@
 
                                     <!-- 子行 4: Surprise -->
                                     <div class="sub-row">
-                                        <div class="row-Generate_Text">Oh, really? I know that telephone signal must have been shielded in the elevator shaft, so what did you do then?</div>
+                                        <div class="row-Generate_Text">Oh, really? I know that telephone signal must
+                                            have been shielded in the elevator shaft, so what did you do then?</div>
                                         <div class="row-emotion">Surprise</div>
-                                        
+
                                         <div class="row-Step-Audio">
                                             <div class="audio-item-compact">
                                                 <span class="audio-title">iteration_2</span>
@@ -597,7 +621,7 @@
                                     </div>
                                 </div>
                             </div>
-                           
+
                         </div>
                     </div>
                     <div class="task-title hard-task">
@@ -623,9 +647,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row-Generate_Text">"You cads, you brutes!" he shouted, trampling on the fragments.</div>
+                            <div class="row-Generate_Text">"You cads, you brutes!" he shouted, trampling on the
+                                fragments.</div>
                             <div class="row-emotion">Angry</div>
-                            
+
                             <div class="row-Step-Audio">
                                 <div class="audio-item-compact">
                                     <span class="audio-title">demo</span>
@@ -668,9 +693,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row-Generate_Text">“Your receptions are always delightful,” she said to that lady.</div>
+                            <div class="row-Generate_Text">“Your receptions are always delightful,” she said to that
+                                lady.</div>
                             <div class="row-emotion">Happy</div>
-                            
+
                             <div class="row-Step-Audio">
                                 <div class="audio-item-compact">
                                     <span class="audio-title">demo</span>
@@ -714,9 +740,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row-Generate_Text">But the period of my dissipation would end, and I always felt very sick afterwards.</div>
+                            <div class="row-Generate_Text">But the period of my dissipation would end, and I always felt
+                                very sick afterwards.</div>
                             <div class="row-emotion">Sad</div>
-                            
+
                             <div class="row-Step-Audio">
                                 <div class="audio-item-compact">
                                     <span class="audio-title">demo</span>
@@ -760,9 +787,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row-Generate_Text">He is very poor, you know, and cannot afford to go to college just yet.</div>
+                            <div class="row-Generate_Text">He is very poor, you know, and cannot afford to go to college
+                                just yet.</div>
                             <div class="row-emotion">Sad</div>
-                            
+
                             <div class="row-Step-Audio">
                                 <div class="audio-item-compact">
                                     <span class="audio-title">demo</span>
@@ -806,9 +834,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row-Generate_Text">The law, what would the law do but protect him and make me an outcast?</div>
+                            <div class="row-Generate_Text">The law, what would the law do but protect him and make me an
+                                outcast?</div>
                             <div class="row-emotion">Angry</div>
-                            
+
                             <div class="row-Step-Audio">
                                 <div class="audio-item-compact">
                                     <span class="audio-title">demo</span>
@@ -852,9 +881,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row-Generate_Text">And it will be a great pleasure to us to pay Toby Clark's salary as your clerk until you become prosperous enough to pay it yourself.</div>
+                            <div class="row-Generate_Text">And it will be a great pleasure to us to pay Toby Clark's
+                                salary as your clerk until you become prosperous enough to pay it yourself.</div>
                             <div class="row-emotion">Happy</div>
-                            
+
                             <div class="row-Step-Audio">
                                 <div class="audio-item-compact">
                                     <span class="audio-title">demo</span>
@@ -899,9 +929,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row-Generate_Text">But we're sick of prayers and providence we're going to do without.</div>
+                            <div class="row-Generate_Text">But we're sick of prayers and providence we're going to do
+                                without.</div>
                             <div class="row-emotion">Sad</div>
-                            
+
                             <div class="row-Step-Audio">
                                 <div class="audio-item-compact">
                                     <span class="audio-title">demo</span>
@@ -945,9 +976,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row-Generate_Text">Our trade rivals are getting ahead of us. The whisper goes round Rossiter and Smith are talking not working.</div>
+                            <div class="row-Generate_Text">Our trade rivals are getting ahead of us. The whisper goes
+                                round Rossiter and Smith are talking not working.</div>
                             <div class="row-emotion">Angry</div>
-                            
+
                             <div class="row-Step-Audio">
                                 <div class="audio-item-compact">
                                     <span class="audio-title">demo</span>
@@ -993,7 +1025,7 @@
                             </div>
                             <div class="row-Generate_Text">"Oh!" cried Phoebe, scenting a clew at last.</div>
                             <div class="row-emotion">Surprise</div>
-                            
+
                             <div class="row-Step-Audio">
                                 <div class="audio-item-compact">
                                     <span class="audio-title">demo</span>
@@ -1028,10 +1060,312 @@
 
 
                     </div>
-                    
+
                 </div>
             </div>
             </div>
+        </section>
+        <section id="audio" class="audio-section">
+            <div class="container">
+                <h2>Audio Samples of Voice Conversion Task</h2>
+                <p class="section-desc">The converted speech preserves the linguistic content of the reference speech
+                    while matching the speaker characteristics of the target speech.</p>
+                <div class="audio-table vc-table">
+
+                    <!-- ===== TABLE HEADER ===== -->
+                    <div class="audio-table-header musiccaps">
+                        <div>Reference Speech</div>
+                        <div>Target Speech</div>
+                        <div><strong>Voice Conversion (SpeechEdit)</strong></div>
+                    </div>
+
+                    <!-- ===== TABLE ROWS ===== -->
+                    <div class="audio-rows musiccaps">
+
+                        <!-- ===== Row 1 ===== -->
+                        <div class="audio-row-group vc-row">
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Reference</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/ref_1.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Target</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/tgt_1.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Converted</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/vc_1.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- ===== Row 2 ===== -->
+                        <div class="audio-row-group vc-row">
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Reference</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/ref_2.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Target</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/tgt_2.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Converted</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/vc_2.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- ===== Row 2 ===== -->
+                        <div class="audio-row-group vc-row">
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Reference</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/ref_3.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Target</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/tgt_3.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Converted</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/vc_3.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- ===== Row 1 ===== -->
+                        <div class="audio-row-group vc-row">
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Reference</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/ref_4.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Target</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/tgt_4.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Converted</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/vc_4.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- ===== Row 1 ===== -->
+                        <div class="audio-row-group vc-row">
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Reference</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/ref_5.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Target</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/tgt_5.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Converted</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/vc_5.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- ===== Row 1 ===== -->
+                        <div class="audio-row-group vc-row">
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Reference</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/ref_6.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Target</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/tgt_6.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Converted</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/vc_6.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="audio-row-group vc-row">
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Reference</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/ref_7.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Target</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/tgt_7.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Converted</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/vc_7.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="audio-row-group vc-row">
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Reference</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/ref_8.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Target</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/tgt_8.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="vc-cell">
+                                <div class="audio-item-compact">
+                                    <span class="audio-title">Converted</span>
+                                    <div class="audio-player-mini">
+                                        <button class="play-btn-mini" data-audio="Demo_Page/VC/vc_8.wav">▶</button>
+                                        <div class="progress-mini"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- Second section: Easy Task -->
+                <div class="music-section"></div>
+
         </section>
     </main>
 
@@ -1039,7 +1373,7 @@
         <div class="container">
             <div class="footer-content" style="text-align: center;">
                 <div class="footer-section">
-                    <p>This is an anonymous research demonstration For academic purposes only</p>
+                    <p>This is an anonymous research demonstration For academic purposes only.</p>
                 </div>
             </div>
         </div>
